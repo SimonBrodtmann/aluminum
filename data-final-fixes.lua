@@ -10,7 +10,7 @@ end
 
 local util = require("data-util");
 
-if mods["space-exploration"] then 
+if mods["space-exploration"] then
   -- Must be in final fixes
   util.replace_ingredient("rocket-control-unit", "iron-plate", "aluminum-plate")
 

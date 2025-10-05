@@ -10,14 +10,14 @@ data:extend(
     icon_size = 128,
     icon = "__bzaluminum__/graphics/icons/enriched-aluminum.png",
     pictures = {
-      {filename="__bzaluminum__/graphics/icons/enriched-aluminum.png", size=128, scale=0.125},
-      {filename="__bzaluminum__/graphics/icons/enriched-aluminum-1.png", size=128, scale=0.125},
-      {filename="__bzaluminum__/graphics/icons/enriched-aluminum-2.png", size=128, scale=0.125},
-      {filename="__bzaluminum__/graphics/icons/enriched-aluminum-3.png", size=128, scale=0.125},
+      {filename="__bzaluminum__/graphics/icons/enriched-aluminum.png", size=128, scale=0.25},
+      {filename="__bzaluminum__/graphics/icons/enriched-aluminum-1.png", size=128, scale=0.25},
+      {filename="__bzaluminum__/graphics/icons/enriched-aluminum-2.png", size=128, scale=0.25},
+      {filename="__bzaluminum__/graphics/icons/enriched-aluminum-3.png", size=128, scale=0.25},
     },
     subgroup = "raw-material",
     order = "e05-a[enriched-ores]-a1[enriched-aluminum]",
-    stack_size = util.get_stack_size(100)
+    stack_size = 100
   },
   {
     type = "recipe",
@@ -41,7 +41,7 @@ data:extend(
     results =
     { 
       {type = "item",  name = "enriched-aluminum", amount = 6},
-      {type = "fluid", name = "dirty-water", amount = 25, catalyst_amount = 25}
+      {type = "fluid", name = "kr-dirty-water", amount = 25, catalyst_amount = 25}
     },
     crafting_machine_tint =
     {
@@ -66,28 +66,28 @@ data:extend(
       always_show_made_in = true,
       always_show_products = true,
       allow_productivity = true,
-      ingredients = { {"enriched-aluminum", 5} },
-      results = { {"alumina", 5} },
+      ingredients = { {type="item", name="enriched-aluminum", amount=5} },
+      results = { {type="item", name="alumina", amount=5} },
       order = "b[alumina]-b[enriched-alumina]",
   },	
 	{
 		type = "recipe",
 		name = "dirty-water-filtration-aluminum",
-		category = "fluid-filtration",
+		category = "kr-fluid-filtration",
 		icons =
 		{
 			{
-				icon = data.raw.fluid["dirty-water"].icon,
-				icon_size = data.raw.fluid["dirty-water"].icon_size
+				icon = data.raw.fluid["kr-dirty-water"].icon,
+				icon_size = data.raw.fluid["kr-dirty-water"].icon_size
 			},
 			{
 				icon = data.raw.item["aluminum-ore"].icon,
 				icon_size =	data.raw.item["aluminum-ore"].icon_size,
-				scale = 0.20 * (data.raw.fluid["dirty-water"].icon_size/data.raw.item["aluminum-ore"].icon_size),
+				scale = 0.20,
 				shift = {0, 4}
 			}
 		},
-		icon_size = data.raw.fluid["dirty-water"].icon_size,
+		icon_size = data.raw.fluid["kr-dirty-water"].icon_size,
 		energy_required = 2,
 		enabled = false,
 		allow_as_intermediate = false,
@@ -95,7 +95,7 @@ data:extend(
 		always_show_products = true,
 		ingredients =
 		{
-			{type = "fluid", name = "dirty-water", amount = 100, catalyst_amount = 100},
+			{type = "fluid", name = "kr-dirty-water", amount = 100, catalyst_amount = 100},
 		},
 		results =
 		{

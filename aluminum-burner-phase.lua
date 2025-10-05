@@ -28,25 +28,25 @@ util.replace_ingredient("lab", "copper-cable", "aluminum-cable")
 util.replace_ingredient("lab", "basic-circuit-board", "aluminum-cable")  -- Bob's
 
 if mods.Krastorio2 then
-  util.replace_ingredient("automation-core", "copper-plate", "aluminum-plate")
+  util.replace_ingredient("kr-automation-core", "copper-plate", "aluminum-plate")
   util.replace_ingredient("kr-wind-turbine", "copper-cable", "aluminum-cable")
   util.replace_ingredient("kr-crusher", "copper-cable", "aluminum-cable")
   util.replace_ingredient("kr-sentinel", "copper-cable", "aluminum-cable")
   util.replace_ingredient("repair-pack", "copper-plate", "aluminum-plate")
 
-  util.remove_ingredient("basic-tech-card", "copper-cable")
-  util.add_ingredient("basic-tech-card", "aluminum-cable", 1)
+  util.remove_ingredient("kr-basic-tech-card", "copper-cable")
+  util.add_ingredient("kr-basic-tech-card", "aluminum-cable", 1)
 
   util.add_prerequisite("automation-science-pack", "copper-processing")
   if mods.bobassembly then
     util.set_prerequisite("basic-automation", {"kr-automation-core"})
-    util.set_tech_recipe("basic-automation", {{"basic-tech-card", 1}})
+    util.set_tech_recipe("basic-automation", {{"kr-basic-tech-card", 1}})
   end
   util.remove_prerequisite("automation", "smelting") -- Bitumen mod
 
   -- For warptorio2 expansion with K2
   util.remove_prerequisite("laboratory", "automation-science-pack")
-  util.set_tech_recipe("laboratory", {{"basic-tech-card", 1}})
+  util.set_tech_recipe("laboratory", {{"kr-basic-tech-card", 1}})
 end
 
 
@@ -74,11 +74,11 @@ if mods["aai-industry"] and mods.Krastorio2 then
   util.remove_prerequisite("fuel-processing", "automation-science-pack")
   util.remove_prerequisite("electricity", "automation-science-pack")
   util.remove_prerequisite("kr-sentinel", "automation-science-pack")
-  util.set_tech_recipe("logistics", {{"basic-tech-card", 1}})
-  util.set_tech_recipe("fuel-processing", {{"basic-tech-card", 1}})
-  util.set_tech_recipe("electricity", {{"basic-tech-card", 1}})
-  util.set_tech_recipe("kr-sentinel", {{"basic-tech-card", 1}})
-  util.set_tech_recipe("kr-basic-fluid-handling", {{"basic-tech-card", 1}})
+  util.set_tech_recipe("logistics", {{"kr-basic-tech-card", 1}})
+  util.set_tech_recipe("fuel-processing", {{"kr-basic-tech-card", 1}})
+  util.set_tech_recipe("electricity", {{"kr-basic-tech-card", 1}})
+  util.set_tech_recipe("kr-sentinel", {{"kr-basic-tech-card", 1}})
+  util.set_tech_recipe("kr-basic-fluid-handling", {{"kr-basic-tech-card", 1}})
 
   util.add_prerequisite("deadlock-stacking-1", "automation-science-pack")
   util.add_prerequisite("kr-radar", "automation-science-pack")
@@ -122,9 +122,10 @@ require("compatibility/textplates")
 
 -- All customizations or custom unlocks prior to this block
 util.add_unlock_force("electronics", "electronic-circuit")
-util.replace_ingredients_prior_to("electronics", "electronic-circuit", "aluminum-cable")
-util.replace_ingredients_prior_to("copper-processing", "copper-cable", "aluminum-cable")
-util.replace_ingredients_prior_to("copper-processing", "copper-plate", "aluminum-plate")
+-- Disabled for now because replace_ingredients_prior_to has an infinite recursion
+--util.replace_ingredients_prior_to("electronics", "electronic-circuit", "aluminum-cable")
+--util.replace_ingredients_prior_to("copper-processing", "copper-cable", "aluminum-cable")
+--util.replace_ingredients_prior_to("copper-processing", "copper-plate", "aluminum-plate")
 -- Any post-fixes (eg aluminum back to copper) after this block
 
 util.remove_prerequisite("copper-processing", "automation")

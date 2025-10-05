@@ -77,15 +77,18 @@ end
 
 util.replace_ingredient("kr-shelter", "copper-cable", "aluminum-cable")
 
+local glass = mods["Krastorio2"] and "kr-glass" or "glass"
+local sand = mods["Krastorio2"] and "kr-sand" or "sand"
+
 -- Glass
 -- k2
-util.replace_some_ingredient("glass", "sand", 3, "alumina", 1)
+util.replace_some_ingredient(glass, sand, 3, "alumina", 1)
 -- aai
 util.multiply_recipe("glass-from-sand", 4)
-util.replace_some_ingredient("glass-from-sand", "sand", 3, "alumina", 1)
+util.replace_some_ingredient("glass-from-sand", sand, 3, "alumina", 1)
 util.set_category("glass-from-sand", "basic-founding")
 -- se
-util.replace_some_ingredient("se-glass-vulcanite", "sand", 3, "alumina", 1)
+util.replace_some_ingredient("se-glass-vulcanite", sand, 3, "alumina", 1)
 
 -- sand-and-glass
 util.multiply_recipe("sng-glass-plate", 4)
@@ -107,10 +110,9 @@ end
 
 -- k2
 if mods.Krastorio2 then
-  util.replace_some_ingredient("inserter-parts", "iron-stick", 2, "aluminum-plate", 1)
+  util.replace_some_ingredient("kr-inserter-parts", "iron-stick", 2, "aluminum-plate", 1)
   util.add_ingredient("inserter", "iron-stick", 1) -- nice symmetry
   util.replace_ingredient("fast-inserter", "steel-plate", "aluminum-plate")
-  util.replace_ingredient("filter-inserter", "steel-plate", "aluminum-plate")
   util.replace_ingredient("kr-wind-turbine", "iron-plate", "aluminum-plate")
 
   util.replace_ingredient("battery-equipment", "iron-plate", "aluminum-plate")
@@ -118,8 +120,8 @@ if mods.Krastorio2 then
   util.replace_ingredient("big-battery-equipment", "iron-plate", "aluminum-plate")
   util.replace_ingredient("personal-submachine-laser-defense-mk1-equipment", "iron-plate", "aluminum-plate")
 
-  util.replace_ingredient("additional-engine", "steel-plate", "aluminum-6061")
-  util.replace_ingredient("advanced-additional-engine", "steel-plate", "aluminum-6061")
+  util.replace_ingredient("kr-additional-engine-equipment", "steel-plate", "aluminum-6061")
+  util.replace_ingredient("kr-advanced-additional-engine-equipment", "steel-plate", "aluminum-6061")
   util.replace_ingredient("vehicle-roboport", "steel-plate", "aluminum-6061")
 
 
@@ -172,9 +174,7 @@ util.replace_ingredient("Schall-fast-inserter-R4", "iron-plate", "aluminum-plate
 util.replace_ingredient("Schall-fast-inserter-R5", "iron-plate", "aluminum-plate")
 util.replace_ingredient("very-long-handed-inserter", "iron-plate", "aluminum-plate")
 util.replace_ingredient("FastLongInserters_fast-inserter", "iron-plate", "aluminum-plate")
-util.replace_ingredient("FastLongInserters_filter-inserter", "iron-plate", "aluminum-plate")
 util.replace_ingredient("FastLongInserters_stack-inserter", "iron-plate", "aluminum-plate")
-util.replace_ingredient("FastLongInserters_stack-filter-inserter", "iron-plate", "aluminum-plate")
 
 -- Robocharger
 util.add_ingredient("robocharger", "aluminum-6061", 35)
@@ -195,7 +195,7 @@ util.replace_some_ingredient("Teslacharge-pack", "steel-plate", 4, "aluminum-pla
 if mods.leighzerscrapyards then
   util.add_to_product("scrap-processing", "iron-plate", -1)
   util.add_to_product("scrap-processing", "copper-plate", -1)
-  util.add_product("scrap-processing", {"aluminum-plate", 2})
+  util.add_product("scrap-processing", {type="item", name="aluminum-plate", amount=2})
 end
 
 

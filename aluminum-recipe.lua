@@ -43,7 +43,7 @@ data:extend({
 ),
     enabled = true,
     energy_required = mods.Krastorio2 and 16 or 3.2,
-    ingredients = {{"aluminum-ore", mods.Krastorio2 and 10 or 1}},
+    ingredients = {{type = "item", name = "aluminum-ore", amount = mods.Krastorio2 and 10 or 1}},
     subgroup = "raw-material",
     results = alumina_results,
   },
@@ -60,33 +60,13 @@ data:extend({
         } or {
           { icon = "__bzaluminum__/graphics/icons/aluminum-plate.png", icon_size = 128},
         }
-),
-    normal = (mods["Krastorio2"] and
-        {
-          enabled = true,
-          energy_required = 16,
-          ingredients = {{"alumina", 10}},
-          results = {
-            {type="item", name = "aluminum-plate", amount=10}
-          }
-        } or
-        {
-          enabled = true,
-          energy_required = 3.2,
-          ingredients = {{"alumina", 1}},
-          results = {
-            {type="item", name = "aluminum-plate", amount=1}
-          }
-        }),
-    expensive =
-    {
-      enabled = true,
-      energy_required = 3.2,
-      ingredients = {{"alumina", 2}},
-      results = {
-        {type="item", name = "aluminum-plate", amount=1},
-      }
-    }
+      ),
+    enabled = true,
+    energy_required = mods["Krastorio2"] and 16 or 3.2,
+    ingredients = {{type="item", name="alumina", amount=mods["Krastorio2"] and 10 or 1}},
+    results = {
+      {type="item", name = "aluminum-plate", amount=mods["Krastorio2"] and 10 or 1}
+    },
   },
   {
     type = "item",
@@ -94,14 +74,14 @@ data:extend({
     icon = "__bzaluminum__/graphics/icons/alumina.png",
     icon_size = 128,
     pictures = {
-      {filename="__bzaluminum__/graphics/icons/alumina.png", size=128, scale=0.125},
-      {filename="__bzaluminum__/graphics/icons/alumina-1.png", size=128, scale=0.125},
-      {filename="__bzaluminum__/graphics/icons/alumina-2.png", size=128, scale=0.125},
-      {filename="__bzaluminum__/graphics/icons/alumina-3.png", size=128, scale=0.125},
+      {filename="__bzaluminum__/graphics/icons/alumina.png", size=128, scale=0.25},
+      {filename="__bzaluminum__/graphics/icons/alumina-1.png", size=128, scale=0.25},
+      {filename="__bzaluminum__/graphics/icons/alumina-2.png", size=128, scale=0.25},
+      {filename="__bzaluminum__/graphics/icons/alumina-3.png", size=128, scale=0.25},
     },
     subgroup = "raw-material",
     order = "b[alumina]",
-    stack_size = util.get_stack_size(100)
+    stack_size = 100
   },
   {
     type = "item",
@@ -110,7 +90,7 @@ data:extend({
     icon_size = 128,
     subgroup = "raw-material",
     order = "b[aluminum-plate]",
-    stack_size = util.get_stack_size(100)
+    stack_size = 100
   },
 })
 
@@ -150,7 +130,7 @@ data:extend({
     unit = {
       count = 10, time = 15,
       ingredients = mods.Krastorio2 and 
-      {{"basic-tech-card", 1}} or {{"automation-science-pack", 1}},
+      {{"kr-basic-tech-card", 1}} or {{"automation-science-pack", 1}},
     },
     prerequisites = {},
     ignore_tech_cost_multiplier = true,
@@ -190,7 +170,7 @@ data:extend({
     icon_size = 64, icon_mipmaps = 4,
     subgroup = util.cablesg,
     order = "b[aaac-cable]",
-    stack_size = util.get_stack_size(100),
+    stack_size = 100,
   },
   {
     type = "recipe",
@@ -199,8 +179,8 @@ data:extend({
     order = "d[aaac-cable]",
     enabled = true,
     energy_required = 0.5,
-    ingredients = {{"aluminum-plate", 2}},
-    results = {{"aluminum-cable", 1}},
+    ingredients = {{type="item", name="aluminum-plate", amount=2}},
+    results = {{type="item", name="aluminum-cable", amount=1}},
   },
   {
     type = "item",
@@ -218,8 +198,8 @@ data:extend({
     order = "d[acsr-cable]",
     enabled = false,
     energy_required = 0.5,
-    ingredients = {{"aluminum-cable", 6}, {"steel-plate", 1}},
-    results = {{"acsr-cable", 3}},
+    ingredients = {{type="item", name="aluminum-cable", amount=6}, {type="item", name="steel-plate", amount=1}},
+    results = {{type="item", name="acsr-cable", amount=3}},
   }
 })
 
@@ -228,14 +208,14 @@ if mods.Krastorio2 then
   {
     type = "recipe",
     name = "aluminum-cable-s-c",
-    category = "smelting-crafting",
-    subgroup = "smelting-crafting",
+    category = "kr-smelting-crafting",
+    subgroup = "kr-smelting-crafting",
     order = "d[aaac-cable]",
     enabled = false,
     energy_required = 0.5,
     hide_from_player_crafting = true,
-    ingredients = {{"aluminum-ore", 4}},
-    results = {{"aluminum-cable", 1}},
+    ingredients = {{type="item", name="aluminum-ore", amount=4}},
+    results = {{type="item", name="aluminum-cable", amount=1}},
     icons = {
       {icon = "__bzaluminum__/graphics/icons/aluminum-cable.png", icon_size = 64, icon_mipmaps = 4},
       {icon = "__bzaluminum__/graphics/icons/aluminum-ore.png", icon_size = 64, icon_mipmaps = 3, scale=0.25, shift= {-8, -8}},
@@ -244,14 +224,14 @@ if mods.Krastorio2 then
   {
     type = "recipe",
     name = "aluminum-cable-enriched-s-c",
-    category = "smelting-crafting",
-    subgroup = "smelting-crafting",
+    category = "kr-smelting-crafting",
+    subgroup = "kr-smelting-crafting",
     order = "d[aaac-cable]",
     enabled = false,
     energy_required = 0.5,
     hide_from_player_crafting = true,
-    ingredients = {{"enriched-aluminum", 2}},
-    results = {{"aluminum-cable", 1}},
+    ingredients = {{type="item", name="enriched-aluminum", amount=2}},
+    results = {{type="item", name="aluminum-cable", amount=1}},
     icons = {
       {icon = "__bzaluminum__/graphics/icons/aluminum-cable.png", icon_size = 64, icon_mipmaps = 4},
       {icon = "__bzaluminum__/graphics/icons/enriched-aluminum.png", icon_size = 128, scale=0.125, shift= {-8, -8}},
@@ -263,12 +243,12 @@ if mods.Krastorio2 then
 end
 
 local plug = {
-  {"alumina", 1},
-  {"copper-plate", 1},
-  {"iron-plate", 1}, -- replace with tungsten plate later
+  {type="item", name="alumina", amount=1},
+  {type="item", name="copper-plate", amount=1},
+  {type="item", name="iron-plate", amount=1}, -- replace with tungsten plate later
 }
 if mods.bzzirconium then 
-  table.insert(plug, {"zirconia", 1})
+  table.insert(plug, {type="item", name="zirconia", amount=1})
 end
 data:extend({
   {
@@ -288,7 +268,7 @@ data:extend({
     enabled = false,
     energy_required = 2,
     ingredients = plug,
-    results = {{"spark-plug", #plug}},
+    results = {{type = "item", name = "spark-plug", amount = #plug}},
   }
 })
 util.add_effect("engine", { type = "unlock-recipe", recipe = "spark-plug" })
@@ -303,11 +283,11 @@ aluminum_6061["aluminum-plate"] = 18
 aluminum_6061["copper-plate"] = 1
 aluminum_6061["iron-plate"] = 1
 if mods.bzsilicon or mods.Krastorio2 then
-  aluminum_6061["silicon"] = 1
+  aluminum_6061[mods.Krastorio2 and "kr-silicon" or "silicon"] = 1
   aluminum_6061["aluminum-plate"] = aluminum_6061["aluminum-plate"] - 1
 end
 if mods.Krastorio2 then
-  aluminum_6061["rare-metals"] = 1
+  aluminum_6061["kr-rare-metals"] = 1
   aluminum_6061["aluminum-plate"] = aluminum_6061["aluminum-plate"] - 1
 end
 data:extend({
@@ -329,7 +309,7 @@ data:extend({
     enabled = false,
     energy_required = 100,
     ingredients = {},
-    results = {{"aluminum-6061", 20}},
+    results = {{type="item", name="aluminum-6061", amount=20}},
   },
   {
     type = "technology",
@@ -366,7 +346,7 @@ if mods.bzzirconium then
   aluminum_2219["aluminum-plate"] = aluminum_2219["aluminum-plate"] - 1
 end
 if mods.Krastorio2 then
-  aluminum_2219["rare-metals"] = 1
+  aluminum_2219["kr-rare-metals"] = 1
   aluminum_2219["aluminum-plate"] = aluminum_2219["aluminum-plate"] - 1
 end
 data:extend({
@@ -388,7 +368,7 @@ data:extend({
     enabled = false,
     energy_required = 100,
     ingredients = {},
-    results = {{"aluminum-2219", 20}},
+    results = {{type="item", name="aluminum-2219", amount=20}},
   },
   {
     type = "technology",
@@ -434,11 +414,11 @@ if mods.bztitanium then
       enabled = false,
       energy_required = 10,
       ingredients = {
-        {"alumina", 10},
-        {util.titanium_plate, 1},
-        {type="fluid", name=mods.Krastorio2 and "ammonia" or "sulfuric-acid", amount=5},
+        {type="item", name="alumina", amount=10},
+        {type="item", name=util.titanium_plate, amount=1},
+        {type="fluid", name=mods.Krastorio2 and "kr-ammonia" or "sulfuric-acid", amount=5},
       },
-      results = {{"ti-sapphire", 1}},
+      results = {{type="item", name="ti-sapphire", amount=1}},
     },
   })
   util.add_effect("laser", {type="unlock-recipe", recipe="ti-sapphire"})
@@ -457,8 +437,8 @@ data:extend({
     category = "double-smelting",
     enabled = false,
     energy_required = 3.2,
-    ingredients =  {{"aluminum-ore", 1}},
-    results = {{"aluminum-plate", 1}},
+    ingredients =  {{type="item", name="aluminum-ore", amount=1}},
+    results = {{type="item", name="aluminum-plate", amount=1}},
   }
 })
 util.add_effect("double-smelting-tech-steel", {type = "unlock-recipe", recipe = "double-aluminum"})

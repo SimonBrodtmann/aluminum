@@ -1,5 +1,5 @@
 
-if mods["248k"] then
+if mods["248k-Redux"] then
 data:extend({
 
     {
@@ -20,7 +20,7 @@ data:extend({
         always_show_made_in = true,
         icons = {
             {
-                icon = "__248k__/ressources/fluids/el_dirty_water.png", icon_size = 64,
+                icon = "__248k-Redux-graphics__/ressources/fluids/el_dirty_water.png", icon_size = 64,
             },
             { 
                 icon = "__bzaluminum__/graphics/icons/aluminum-ore.png", icon_size = 64, icon_mipmaps = 3, scale=0.25, shift= {-8, -8}

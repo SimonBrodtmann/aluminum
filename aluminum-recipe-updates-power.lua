@@ -29,12 +29,12 @@ if mods["space-exploration"] then
   util.remove_product("se-recycle-large-electric-pole", "copper-cable")
   util.remove_product("se-recycle-substation", "copper-cable")
 
-  util.add_product("se-recycle-small-iron-electric-pole", {"aluminum-cable", 1})
-  util.add_product("se-recycle-small-electric-pole", {"aluminum-cable", 1})
-  util.add_product("se-recycle-medium-electric-pole", {"acsr-cable", 1})
-  util.add_product("se-recycle-big-electric-pole", {"acsr-cable", 2})
-  util.add_product("se-recycle-large-electric-pole", {"acsr-cable", 4})
-  util.add_product("se-recycle-substation", {"acsr-cable", 4})
+  util.add_product("se-recycle-small-iron-electric-pole", {type="item", name="aluminum-cable", amount=1})
+  util.add_product("se-recycle-small-electric-pole", {type="item", name="aluminum-cable", amount=1})
+  util.add_product("se-recycle-medium-electric-pole", {type="item", name="acsr-cable", amount=1})
+  util.add_product("se-recycle-big-electric-pole", {type="item", name="acsr-cable", amount=2})
+  util.add_product("se-recycle-large-electric-pole", {type="item", name="acsr-cable", amount=4})
+  util.add_product("se-recycle-substation", {type="item", name="acsr-cable", amount=4})
 end
 
 -- final amounts apply to all mod loadouts

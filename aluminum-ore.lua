@@ -1,7 +1,10 @@
 local resource_autoplace = require('resource-autoplace');
-local noise = require('noise');
 
 local util = require("data-util");
+
+data.raw.planet.nauvis.map_gen_settings.autoplace_controls["aluminum-ore"] = {}
+data.raw.planet.nauvis.map_gen_settings.autoplace_settings.entity.settings["aluminum-ore"] = {}
+resource_autoplace.initialize_patch_set("aluminum-ore", true)
 
 data:extend({
 	{
@@ -10,10 +13,6 @@ data:extend({
     name = "aluminum-ore",
     richness = true,
     order = "b-e"
-	},
-	{
-    type = "noise-layer",
-    name = "aluminum-ore"
 	},
 	{
     type = "resource",
@@ -73,13 +72,13 @@ data:extend({
       icon_size = 64, icon_mipmaps = 3,
       icon = "__bzaluminum__/graphics/icons/aluminum-ore.png",
       pictures = {
-        {filename="__bzaluminum__/graphics/icons/aluminum-ore.png", size=64, scale=0.25},
-        {filename="__bzaluminum__/graphics/icons/aluminum-ore-2.png", size=64, scale=0.25},
-        {filename="__bzaluminum__/graphics/icons/aluminum-ore-3.png", size=64, scale=0.25},
-        {filename="__bzaluminum__/graphics/icons/aluminum-ore-4.png", size=64, scale=0.25},
+        {filename="__bzaluminum__/graphics/icons/aluminum-ore.png", size=64, scale=0.5},
+        {filename="__bzaluminum__/graphics/icons/aluminum-ore-2.png", size=64, scale=0.5},
+        {filename="__bzaluminum__/graphics/icons/aluminum-ore-3.png", size=64, scale=0.5},
+        {filename="__bzaluminum__/graphics/icons/aluminum-ore-4.png", size=64, scale=0.5},
       },
       subgroup = "raw-resource",
       order = "t-c-a",
-      stack_size = util.get_stack_size(50)
+      stack_size = 50
   },
 })
